@@ -1,4 +1,36 @@
-<h1>List  Of Employees</h1>
+<div>
+        <button class="btn btn-success" (click)="readAllStudentData()">Read Data</button> <br>
+        <button class="btn btn-success" (click)="readStudentById(101)">Read Data by id</button> <br>
+        <button class="btn btn-success" (click)="readStudentByName('Raj')">Read Data by name</button> <br>
+        <table class="table table-hover table-bordered">
+                <thead>
+                        <th>Student ID</th>
+                        <th>Name</th>
+                        <th>Stream</th>
+                        <th>Marks</th>
+                </thead>
+                <tbody>
+                        <tr *ngFor="let student of studentData; let i = index;">
+                                <td> {{student.studentID}} </td>
+                                <td> {{student.name}} </td>
+                                <td> {{student.stream}} </td>
+                                <td> {{student.marks}} </td>
+                        </tr>
+                </tbody>
+        </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <h1>List  Of Employees</h1>
 
 <div class="container">
         <table class="table table-hover table-bordered">
@@ -10,15 +42,31 @@
                 </thead>
 
                 <tbody>
-                        <tr *ngFor="let user of userList">
-                                <td>{{user.uid}}</td>
-                                <td>{{user.name}}</td>
-                                <td>{{user.location}}</td>
-                                <td> 
-                                        <button class="btn btn-primary" (click)="onEdit()">Edit</button> &nbsp;
-                                        <button class="btn btn-danger" (click)="onDelete()">Delete</button>
-                                </td>
-                        </tr>
+                        <ng-container *ngIf="bEdit==false then editTable; else saveTable"></ng-container>
                 </tbody>
         </table>
 </div>
+
+<ng-template #editTable>
+        <tr *ngFor="let user of userList; let i = index">
+                <td>{{user.uid}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.location}}</td>
+                <td> 
+                        <button class="btn btn-primary" (click)="onEdit()">Edit</button> &nbsp;
+                        <button class="btn btn-danger" (click)="onDelete(i)">Delete</button>
+                </td>
+        </tr>
+</ng-template>
+
+<ng-template #saveTable>
+        <tr *ngFor="let user of userList; let i = index">
+                <td><input type="text" [(ngModel)]="user.uid"></td>
+                <td><input type="text" [(ngModel)]="user.name"></td>
+                <td><input type="text" [(ngModel)]="user.location"></td>
+                <td> 
+                        <button class="btn btn-success" (click)="onSave()">Save</button> &nbsp;
+                        <button class="btn btn-danger" (click)="onDelete(i)">Delete</button>
+                </td>
+        </tr>
+</ng-template> -->
