@@ -2,9 +2,9 @@
   "students": [
     {
       "id": 101,
-      "name": "Raghav",
-      "stream": "Science",
-      "marks": 455
+      "name": "Raju",
+      "stream": "Arts",
+      "marks": 470
     },
     {
       "id": 104,
@@ -14,9 +14,15 @@
     },
     {
       "id": 102,
-      "name": "Rajesh",
+      "name": "Raj",
+      "stream": "Science",
+      "marks": 465
+    },
+    {
+      "id": 105,
+      "name": "Rocket",
       "stream": "Arts",
-      "marks": 350
+      "marks": 450
     },
     {
       "id": 103,
@@ -38,10 +44,10 @@
       "id": 111
     },
     {
-      "id": 107,
-      "name": "Radhika",
+      "id": 112,
+      "name": "Raju",
       "stream": "Arts",
-      "marks": 480
+      "marks": 470
     }
   ]
 }

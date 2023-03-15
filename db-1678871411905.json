@@ -1,0 +1,34 @@
+{
+  "students": [
+    {
+      "studentID": 101,
+      "name": "Raju",
+      "stream": "Arts",
+      "marks": 470
+    },
+    {
+      "studentID": 104,
+      "name": "Raghav",
+      "stream": "Science",
+      "marks": 455
+    },
+    {
+      "studentID": 102,
+      "name": "Raj",
+      "stream": "Science",
+      "marks": 465
+    },
+    {
+      "studentID": 105,
+      "name": "Rocket",
+      "stream": "Arts",
+      "marks": 450
+    },
+    {
+      "studentID": 103,
+      "name": "Raka",
+      "stream": "Commerce",
+      "marks": 460
+    }
+  ]
+}

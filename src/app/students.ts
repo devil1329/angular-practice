@@ -1,13 +1,15 @@
+import { destroyPlatform } from "@angular/core";
+
 export class Students{
-        studentID! : number;
+        id! : number;
         name! : string;
         stream! : string;
         marks! : number;
 
-        constructor(studentID : number, name : string, stream : string, marks : number){
-                this.studentID=studentID;
+        constructor(id : number, name : string, stream : string, marks : number){
+                this.id=id;
                 this.name=name;
                 this.stream=stream;
-                this.marks=marks;
+                this.marks=marks
         }
 }

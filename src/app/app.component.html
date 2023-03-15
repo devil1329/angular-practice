@@ -1,7 +1,7 @@
 <div>
-        <button class="btn btn-success" (click)="readAllStudentData()">Read Data</button> <br>
-        <button class="btn btn-success" (click)="readStudentById(101)">Read Data by id</button> <br>
-        <button class="btn btn-success" (click)="readStudentByName('Raj')">Read Data by name</button> <br>
+        <button class="btn btn-success" (click)="readData()">Fetch Data</button> &nbsp;
+        <button class="btn btn-success" (click)="add()">Add Student</button> <br>
+        <ng-container *ngIf = "bAdd == true then addData"></ng-container>
         <table class="table table-hover table-bordered">
                 <thead>
                         <th>Student ID</th>
@@ -10,17 +10,44 @@
                         <th>Marks</th>
                 </thead>
                 <tbody>
-                        <tr *ngFor="let student of studentData; let i = index;">
-                                <td> {{student.studentID}} </td>
-                                <td> {{student.name}} </td>
-                                <td> {{student.stream}} </td>
-                                <td> {{student.marks}} </td>
-                        </tr>
+                        <ng-container *ngIf="bEdit==false then editTable; else saveTable"></ng-container>
                 </tbody>
         </table>
 </div>
 
+<ng-template #addData>
+        Enter Id : <input type="number" [(ngModel)]="idPost"> <br>
+        Enter Name : <input type="text" [(ngModel)]="namePost"> <br>
+        Enter Stream : <input type="text" [(ngModel)]="streamPost"> <br>
+        Enter Marks : <input type="number" [(ngModel)]="marksPost"> <br>
+        <button class="btn btn-success" (click)="insertRecord()">Save</button>
+</ng-template>
 
+<ng-template #editTable>
+        <tr *ngFor="let student of studentData">
+                <td> {{student.id}} </td>
+                <td> {{student.name}} </td>
+                <td> {{student.stream}} </td>
+                <td> {{student.marks}} </td>
+                <td>
+                        <button class="btn btn-success" (click)="edit()">Edit</button> &nbsp;
+                        <button class="btn btn-danger" (click)="deleteRecord(student.id)">Delete</button>
+                </td>
+        </tr>
+</ng-template>
+
+<ng-template #saveTable>
+        <tr *ngFor="let student of studentData">
+                <td> <input type="number" [(ngModel)]="student.id"> </td>
+                <td> <input type="text" [(ngModel)]="student.name"> </td>
+                <td> <input type="text" [(ngModel)]="student.stream"> </td>
+                <td> <input type="number" [(ngModel)]="student.marks"> </td>
+                <td>
+                        <button class="btn btn-success" (click)="updateRecord(student)">Save</button> &nbsp;
+                        <button class="btn btn-danger" (click)="deleteRecord(student.id)">Delete</button>
+                </td>
+        </tr>
+</ng-template>
 
 
 

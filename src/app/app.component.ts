@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
+import { RestService } from './rest.service';
 import { Students } from './students';
-import { StudentsService } from './students.service';
 
 @Component({
 	selector: 'app-root',
@@ -8,17 +8,65 @@ import { StudentsService } from './students.service';
 	styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-	constructor(private studentServices : StudentsService){}
+	constructor(private restService : RestService){}
 	studentData : Students[] = [];
-	readAllStudentData(){
-		this.studentData = this.studentServices.getAllStudents();
+
+	ngOnInit(){
+		this.readData();
 	}
-	readStudentById(studentID : number){
-		this.studentData = this.studentServices.getStudentById(studentID);
+	
+	// get operation
+	readData() {
+		this.restService.getData().subscribe ({
+			next : (data : Students[]) => {this.studentData = data.sort((a : Students,b : Students) => {return a.id - b.id})},
+			error : (err) => console.log(err)
+		})
 	}
-	readStudentByName(studentName : string){
-		this.studentData = this.studentServices.getStudentByName(studentName);
+
+	//post operation
+	bAdd : boolean = false;
+	idPost! : number;
+	namePost! : string;
+	streamPost! : string;
+	marksPost! : number;
+	add(){
+		this.bAdd=true;
 	}
+	insertRecord(){
+		this.bAdd=false;
+		let stuObj : Students = new Students(this.idPost, this.namePost, this.streamPost, this.marksPost);
+		this.restService.insertData(stuObj).subscribe({
+			next : (data) => { 
+				console.log("Received data is : "+data);
+				this.readData();},
+			error : (err) => console.log(err)
+		})
+	}
+
+	//put operation
+	bEdit : boolean = false;
+	edit(){
+		this.bEdit=true;
+	}
+	updateRecord(stuObj : Students){
+		this.bEdit = false;
+		this.restService.editRecord(stuObj).subscribe({
+			next : (data) => { 
+				console.log("Received data is : "+data);
+				this.readData();},
+			error : (err) => console.log(err)	
+		})
+	}
+	
+	//delete operation
+	deleteRecord(studentId : number){
+		this.restService.deleteData(studentId).subscribe({
+			next : (data) => {
+				console.log(data);
+				this.readData();},
+			error : (err) =>console.log(err)
+		})	
+	}	
 }
 
 	
