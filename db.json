@@ -43,5 +43,22 @@
       "stream": "Arts",
       "marks": 480
     }
+  ],
+  "images": [
+    {
+      "img": "../../assets/img5.jpg"
+    },
+    {
+      "img": "../../assets/img4.jpg"
+    },
+    {
+      "img": "../../assets/img3.jpg"
+    },
+    {
+      "img": "../../assets/img2.jpg"
+    },
+    {
+      "img": "../../assets/img1.jpg"
+    }
   ]
 }

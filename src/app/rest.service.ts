@@ -10,6 +10,7 @@ export class RestService {
 
   constructor(private http : HttpClient) { }
   strUrl : string = "http://localhost:3001/students";
+  imgUrl : string = "http://localhost:3001/images"
 
   //get
   getData() : Observable<any>{
@@ -35,5 +36,10 @@ export class RestService {
     let deleteUrl = this.strUrl+"/"+id;
     console.log("Url for delete : "+deleteUrl);
     return this.http.delete(deleteUrl);
+  }
+
+  //getImages
+  getImages() : Observable<any> {
+    return this.http.get(this.imgUrl);
   }
 }

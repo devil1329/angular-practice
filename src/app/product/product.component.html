@@ -1,1 +1,7 @@
 <p>product works!</p>
+<button class="btn btn-success" (click)="readData()">Fetch Data</button> &nbsp; <br>
+<!-- <img src="../../assets/img5.jpg" alt="" style="width:50vw"> -->
+<div *ngFor="let images of imgData">
+        <img [src]="images.img"  alt="" style="width:50vw"> <br>
+        <!-- <p>value of string is : {{images.img}}</p> -->
+</div>
