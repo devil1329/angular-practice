@@ -12,9 +12,9 @@ export class ProductComponent {
   imgData: Images[] = [];
   
   readData() {
-    this.restService.getImages().subscribe({
-      next: (data: Images[]) => { this.imgData = data},
-      error: (err) => console.log(err)
-    })
+    // this.restService.getImages().subscribe({
+    //   next: (data: Images[]) => { this.imgData = data},
+    //   error: (err) => console.log(err)
+    // })
   }
 }

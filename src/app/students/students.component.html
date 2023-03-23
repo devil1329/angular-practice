@@ -1,8 +1,18 @@
 <div>
+        <!-- all functionalities -->
         <button class="btn btn-success" (click)="readData()">Fetch Data</button> &nbsp;
+        <button class="btn btn-success" (click)="get()">One Student Details</button> &nbsp;
         <button class="btn btn-success" (click)="add()">Add Student</button> <br>
-        <ng-container *ngIf = "bAdd == true then addData"></ng-container>
-        <table class="table table-hover table-bordered">
+
+        <!-- all containers -->
+        <ng-container *ngIf="bFetch == false then getStudent"></ng-container>
+        <ng-container *ngIf="bAdd == true then addData"></ng-container>
+        <ng-container *ngIf="bFetch == true then fetch"></ng-container>
+</div>
+
+<!-- all templates -->
+<ng-template #fetch>
+<table class="table table-hover table-bordered">
                 <thead>
                         <th>Student ID</th>
                         <th>Name</th>
@@ -13,14 +23,23 @@
                         <ng-container *ngIf="bEdit==false then editTable; else saveTable"></ng-container>
                 </tbody>
         </table>
-</div>
+</ng-template>
 
 <ng-template #addData>
         Enter Id : <input type="number" [(ngModel)]="idPost"> <br>
         Enter Name : <input type="text" [(ngModel)]="namePost"> <br>
+        Enter Standard : <input type="number" [(ngModel)]="standardPost"> <br>
         Enter Stream : <input type="text" [(ngModel)]="streamPost"> <br>
-        Enter Marks : <input type="number" [(ngModel)]="marksPost"> <br>
         <button class="btn btn-success" (click)="insertRecord()">Save</button>
+</ng-template>
+
+<ng-template #getStudent>
+        Enter Id : <input type="number" [(ngModel)]="id"> <br>
+        <button class="btn btn-success" (click)="getStudentFun()">Search</button> <br> <br>
+        Enter Id : {{studentObj.id}} <br>
+        Enter Name : {{studentObj.name}} <br>
+        Enter Standard : {{studentObj.standard}} <br>
+        Enter Stream : {{studentObj.stream}}
 </ng-template>
 
 <ng-template #editTable>

@@ -12,6 +12,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { ProductComponent } from './product/product.component';
 import { NoPageFoundComponent } from './no-page-found/no-page-found.component';
 import { StudentsComponent } from './students/students.component';
+import { LoginRegistrationComponent } from './login-registration/login-registration.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { StudentsComponent } from './students/students.component';
     ContactUsComponent,
     ProductComponent,
     NoPageFoundComponent,
-    StudentsComponent
+    StudentsComponent,
+    LoginRegistrationComponent
   ],
   imports: [
     BrowserModule,
