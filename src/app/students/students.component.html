@@ -6,8 +6,8 @@
                 <thead>
                         <th>Student ID</th>
                         <th>Name</th>
+                        <th>Standard</th>
                         <th>Stream</th>
-                        <th>Marks</th>
                 </thead>
                 <tbody>
                         <ng-container *ngIf="bEdit==false then editTable; else saveTable"></ng-container>
@@ -27,8 +27,8 @@
         <tr *ngFor="let student of studentData">
                 <td> {{student.id}} </td>
                 <td> {{student.name}} </td>
+                <td> {{student.standard}} </td>
                 <td> {{student.stream}} </td>
-                <td> {{student.marks}} </td>
                 <td>
                         <button class="btn btn-success" (click)="edit()">Edit</button> &nbsp;
                         <button class="btn btn-danger" (click)="deleteRecord(student.id)">Delete</button>
@@ -40,8 +40,8 @@
         <tr *ngFor="let student of studentData">
                 <td> <input type="number" [(ngModel)]="student.id"> </td>
                 <td> <input type="text" [(ngModel)]="student.name"> </td>
+                <td> <input type="number" [(ngModel)]="student.standard"> </td>
                 <td> <input type="text" [(ngModel)]="student.stream"> </td>
-                <td> <input type="number" [(ngModel)]="student.marks"> </td>
                 <td>
                         <button class="btn btn-success" (click)="updateRecord(student)">Save</button> &nbsp;
                         <button class="btn btn-danger" (click)="deleteRecord(student.id)">Delete</button>

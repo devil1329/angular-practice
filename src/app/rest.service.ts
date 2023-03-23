@@ -14,7 +14,7 @@ export class RestService {
 
   //get
   getData() : Observable<any>{
-    return this.http.get(this.strUrl);
+    return this.http.get('http://localhost:9001/api/students/get-all-student-details');
   }
 
   //post
